@@ -1,0 +1,161 @@
+
+$primary-color: #3498db;
+$primary: #ff5733; 
+$secondary: #6c757d; 
+$font-size-base: 16px;
+
+
+
+$bodybackground:  var(--bs-gray-dark);
+
+body {
+  background-color:$bodybackground; 
+}
+
+$pyellow-color:var(--bs-warning-bg-subtle);
+
+.pyellow {
+  color: $pyellow-color;
+    font-family: font-stack('Arial, Helvetica');
+    font-size: 20px;
+    
+}
+
+
+
+$price-color: #228B22;
+
+
+.pricelg {
+    color: $price-color;
+    font-family: font-stack('Arial, Helvetica');
+    font-size: 32px;
+    
+}
+
+
+.pricesm {
+    @extend .pricelg; //using the @extend function to nest pricesm within pricelg
+    font-weight: bold;
+    font-size: 16px;
+}
+
+//Conditional styles to change buy button false="buy now",true="sold out"
+
+
+$shirtisSoldOut: true;
+$cupisSoldOut: true;
+$coffeeisSoldOut: false;
+
+.shirt-status {
+    background-color: blue;
+}
+@if $shirtisSoldOut {
+  .shirt-status {
+    
+    background-color: red;
+    color: #999;
+    font-weight: bold;
+    pointer-events: none;
+    cursor: not-allowed;
+    border: none;
+      
+    }
+  
+  a.shirt::after {
+    content: "Sold Out";
+    
+  }
+}
+
+@else {
+  .shirt-status {
+    
+    color: white;
+    background-color: blue;
+    border: none;
+    
+  }
+  a.shirt::after {
+    content: "Buy Now";
+  }
+}
+
+
+
+
+
+
+.cup-status {
+    background-color: blue;
+}
+@if $cupisSoldOut {
+  .cup-status {
+    
+    background-color: red;
+    color: #999;
+    font-weight: bold;
+    pointer-events: none;
+    cursor: not-allowed;
+    border: none;
+      
+    }
+  
+  a.cup::after {
+    content: "Sold Out";
+    
+  }
+}
+
+@else {
+  .cup-status {
+    
+    color: white;
+    background-color: blue;
+    border: none;
+    
+  }
+  a.cup::after {
+    content: "Buy Now";
+  }
+}
+
+.coffee-status {
+    background-color: blue;
+}
+@if $coffeeisSoldOut {
+  .coffee-status {
+    
+    background-color: red;
+    color: #999;
+    font-weight: bold;
+    pointer-events: none;
+    cursor: not-allowed;
+    border: none;
+      
+    }
+  
+  a.coffee::after {
+    content: "Sold Out";
+    
+  }
+}
+
+@else {
+  .coffee-status {
+    
+    color: white;
+    background-color: blue;
+    border: none;
+    
+  }
+  a.coffee::after {
+    content: "Buy Now";
+  }
+}
+
+
+@function font-stack($fonts) {
+  @return unquote('#{$fonts}');
+}
+
